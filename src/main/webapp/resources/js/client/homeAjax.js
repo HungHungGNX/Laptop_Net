@@ -32,10 +32,9 @@ $(document).ready(function(){
 			url: "http://localhost:8080/laptopshop/api/san-pham/latest",
 			success: function(result){
 				let content;
+				let product;
 				$.each(result, function(i, sanpham){
-				console.log(sanpham,i)
 				if(i<8){
-				  content = '';
                   content ='<div class="swiper-slide">' +
                   		          '<div class="movie-box">' + 
                   		             '<img src="/laptopshop/img/'+sanpham.id+'.png" class="movie-box-img" />' +
@@ -51,6 +50,17 @@ $(document).ready(function(){
                   		            '</div>'
                  $('.popular-swiper-wrapper').append(content); 		            
                   		  }
+                  		 product = '<div class="movie-box">' + 
+                  		             '<img src="/laptopshop/img/'+sanpham.id+'.png" class="movie-box-img" />' +
+                  		             '<div class="box-text">' +
+                  		             	'<h2 class="movie-title">' + sanpham.tenSanPham + '</h2>' + 
+                  		             	'<span class="movie-type">' + accounting.formatMoney(sanpham.donGia) + ' đ</span>' +
+                  		                '<a href="#" class="watch-btn play-btn" onClick="addToCart(' +
+                                				sanpham.id + ')">' +
+                                            '<i class="bx bx-cart-add"></i>' + '</a>'+
+                  		             '</div>'+
+                  		            '</div>'
+                  		       $('.movies-content').append(product);      
 		        });
 			},
 			error : function(e){

@@ -2,6 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="<c:url value='/js/client/homeAjax.js'/>"></script>
+<!-- Category -->
+<div class="category">
+	<div class="header-category">
+		<p>Category</p>
+		<i class="bx bx-menu"></i>
+	</div>
+	<ul class="category-render">
+	</ul>
+</div>
+
+
 <!-- Home -->
 <section class="home container" id="home">
 	<div class="swiper mySwiper">
@@ -11,6 +22,9 @@
 			</div>
 			<div class="swiper-slide">
 				<img src="Frontend/img/banner-laptop1.jpg" alt="" class="home-img" />
+			</div>
+			<div class="swiper-slide">
+				<img src="Frontend/img/banner-laptop2.jpg" alt="" class="home-img" />
 			</div>
 			<div class="swiper-slide">
 				<img src="Frontend/img/banner-laptop3.jpg" alt="" class="home-img" />
@@ -47,4 +61,6 @@
 	<div class="heading">
 		<h2 class="heading-title">Product</h2>
 	</div>
+	<!-- Content -->
+	<div class="movies-content"></div>
 </section>

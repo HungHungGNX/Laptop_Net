@@ -34,10 +34,13 @@
 		<!-- Logo -->
 		<a href="<%=request.getContextPath()%>/" class="logo"> LAPTOP<span>.NET</span></a>
 		<!-- Search Box -->
-		<div class="search-box">
-			<input type="search" name="" id="search-input"
-				placeholder="Search..." /> <i class="bx bx-search"></i>
-		</div>
+		<form action="/laptopshop/search">
+			<div class="search-box">
+				<input type="search" name="name" id="search-input"
+					placeholder="Search..." />
+				<button type="submit" class="btn-search-global"><i class="bx bx-search"></i></button>
+			</div>
+		</form>
 		<!-- User -->
 			<div class="user-container">
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
