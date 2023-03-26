@@ -4,13 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-</head>
-<script src="<c:url value='/js/client/information.js'/>"></script>
-<script src="<c:url value='/js/client/password.js'/>"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".mytable .tongGiaTri ").each(function() {
+		$(".total-price").each(function() {
 			var value = accounting.formatMoney($(this).text()) + ' VND';
 			console.log(value)
 			$(this).html(value);
@@ -18,182 +18,170 @@
 
 	});
 </script>
+</head>
+
+
 
 <body>
+	<div class="container account">
+		<div class="heading-account">
+			<p>Personal Information</p>
+		</div>
+		<!-- Tab items -->
+		<div class="tabs">
+			<div class="tab-item active">
+				<i class="tab-icon fas fa-code"></i> Account Information
+			</div>
+			<div class="tab-item">
+				<i class="tab-icon fas fa-cog"></i> Change account information
+			</div>
+			<div class="tab-item">
+				<i class="tab-icon fas fa-plus-circle"></i> View history order
+			</div>
+			<div class="line"></div>
+		</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<br>
-				<p style="font-size: 20px">
-					<b>Thông tin tài khoản:</b>
-				</p>
-				<br>
-				<h3 style="line-height: 2;">
-					<span style="font-weight: bold">Họ tên: </span>${user.getHoTen()}</h3>
-				<h3 style="line-height: 2;">
-					<span style="font-weight: bold">Số điện thoại: </span>${user.getSoDienThoai()}</h3>
-				<h3 style="line-height: 2;">
-					<span style="font-weight: bold">Email: </span>${user.getEmail()}</h3>
-				<h3 style="line-height: 2;">
-					<span style="font-weight: bold"> Địa chỉ: </span>${user.getDiaChi()}</h3>
-				<br> <a class="btn btn-primary" data-toggle="modal"
-					data-target="#modalInformation">Cập nhật thông tin cá nhân</a>
-				&nbsp; &nbsp; &nbsp; <a class="btn btn-danger" data-toggle="modal"
-					data-target="#modalChangePassword">Đổi mật khẩu</a> <br> <br>
-				<br>
-				<h3>
-					<b>Lịch sử mua hàng:</b>
-				</h3>
-				<br>
-				<table class="table-cart-checkout mytable">
-					<tr>
-						<th>Mã đơn hàng</th>
-						<th>Ngày mua</th>
-						<th>Ngày giao hàng</th>
-						<th>Ngày nhận hàng</th>
-						<th>Sản phẩm</th>
-						<th>Tổng tiền</th>
-						<th>Trạng thái đơn hàng</th>
-					</tr>
+		<!-- Tab content -->
+		<div class="tab-content">
+			<div class="tab-pane active">
+				<h2>Information</h2>
+				<div class="tab-info-user">
+					<p class="user-name">Name: ${user.getHoTen()}</p>
+					<p class="user-phone">Phone: ${user.getSoDienThoai()}</p>
+					<p class="user-email">Email: ${user.getEmail()}</p>
+					<p class="user-address">Address: ${user.getDiaChi()}</p>
+				</div>
+			</div>
+			<div class="tab-pane">
+				<h2>Account</h2>
+				<div class="group_change">
+					<div class="change-item-left">
+						<p class="change-title">Update Account</p>
+						<div class="form-change">
+							<div class="group-input-change">
+								<label for="name" class="label-change">User Name</label> <label
+									id="nameWarning" style="color: red"></label> <input type="text"
+									class="input-change" id="name" placeholder="Name" name="name"
+									type="text" value=${user.getHoTen() } />
+							</div>
+							<div class="group-input-change">
+								<label for="phone" class="label-change">Phone</label> <label
+									id="phoneWarning" style="color: red"></label> <input
+									type="text" class="input-change" id="phone" placeholder="Phone"
+									name="phone" value=${user.getSoDienThoai() } />
+							</div>
+							<div class="group-input-change">
+								<label for="user-address" class="label-change">Address</label> <label
+									id="addressWarning" style="color: red"></label>
+								<textarea rows="3" cols="1" class="form-control" id="address">${user.getDiaChi()}</textarea>
+							</div>
 
+							<button type="submit" class="btn-update"
+								onclick="changeInformation()">Update Account</button>
+						</div>
+					</div>
+					<div class="change-item-right">
+						<p class="change-title">Update Password</p>
+						<form action="" class="form-change">
+							<div class="group-input-change">
+								<label for="user-password" class="label-change">Password</label>
+								<input type="text" class="input-change" id="user-password"
+									placeholder="Password" />
+							</div>
+							<div class="group-input-change">
+								<label for="user-new-password" class="label-change">New
+									password</label> <input type="text" class="input-change"
+									id="user-new-password" placeholder="New Password" />
+							</div>
+							<div class="group-input-change">
+								<label for="user-repeat-password" class="label-change">Repeat
+									new password</label> <input type="text" class="input-change"
+									id="user-repeat-password" placeholder="Repeat new password" />
+							</div>
+
+							<button type="submit" class="btn-update">Update Password
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane">
+				<h2>History</h2>
+				<div class="group-order">
+					<div class="order-item">
+						<div class="column-1 column">
+							<p>Code orders</p>
+						</div>
+						<div class="column-2 column">
+							<p>Purchase date</p>
+						</div>
+						<div class="column-3 column">
+							<p>Delivery date</p>
+						</div>
+						<div class="column-3 column">
+							<p>Date of receipt of goods</p>
+						</div>
+						<div class="column-4 column">
+							<p>Products</p>
+						</div>
+						<div class="column-5 column">
+							<p>Total price</p>
+						</div>
+						<div class="column-6 column">
+							<p>Status</p>
+						</div>
+					</div>
 					<c:forEach var="donHang" items="${list}" varStatus="loop">
-						<tr style="text-align: center;">
-							<td>${donHang.id}</td>
-							<td>${donHang.ngayDatHang}</td>
+						<div class="order-item">
+							<div class="column-1 column">
+								<p>${donHang.id}</p>
+							</div>
+							<div class="column-2 column">
+								<p>${donHang.ngayDatHang}</p>
+							</div>
+							<div class="column-3 column">
+								<p>${donHang.ngayGiaoHang}</p>
+							</div>
+							<div class="column-3 column">
+								<p>${donHang.ngayNhanHang}</p>
+							</div>
+							<div class="column-4 column">
+								<c:forEach var="chiTiet" items="${donHang.danhSachChiTiet}">
+									<div class="product-order">
+										<p class="product-name">
+											<a href='<c:url value="/sp?id=${chiTiet.sanPham.id}" />'>${chiTiet.sanPham.tenSanPham}</a>
+										</p>
+										<c:choose>
+											<c:when
+												test='${(donHang.trangThaiDonHang == "Đang chờ giao") || (donHang.trangThaiDonHang =="Đang giao")  }'>
 
-							<td>${donHang.ngayGiaoHang}</td>
-
-							<td>${donHang.ngayNhanHang}</td>
-
-							<%-- 							<c:set var="tongGiaTri"
-								value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.donGia}" /> --%>
-							<td><c:forEach var="chiTiet"
-									items="${donHang.danhSachChiTiet}">
-									<p>
-										<a href='<c:url value="/sp?id=${chiTiet.sanPham.id}" />'>${chiTiet.sanPham.tenSanPham}</a><br>
-									</p>
-
-									<c:choose>
-										<c:when 
-											test='${(donHang.trangThaiDonHang == "Đang chờ giao") || (donHang.trangThaiDonHang =="Đang giao")  }'>
-
-											<p>Số lượng: ${chiTiet.soLuongDat }</p>
-											<hr>
-											<c:set var="tongGiaTri"
-												value="${tongGiaTri + chiTiet.soLuongDat*chiTiet.donGia}" />
-										</c:when>
-										<c:otherwise >
-											<p>Số lượng: ${chiTiet.soLuongNhanHang }</p>
-											<hr>
-											<c:set var="tongGiaTri"
-												value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.donGia}" />
-										</c:otherwise>
-									</c:choose>
-								</c:forEach></td>
-
-							<td class="tongGiaTri">${tongGiaTri}</td>
-							<td>${donHang.trangThaiDonHang}</td>
-						</tr>
+												<span>X ${chiTiet.soLuongDat }</span>
+												<c:set var="tongGiaTri"
+													value="${tongGiaTri + chiTiet.soLuongDat*chiTiet.donGia}" />
+											</c:when>
+											<c:otherwise>
+												<span>X ${chiTiet.soLuongNhanHang }</span>
+												<c:set var="tongGiaTri"
+													value="${tongGiaTri + chiTiet.soLuongNhanHang*chiTiet.donGia}" />
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</c:forEach>
+							</div>
+							<div class="column-5 column total-price">
+								<p>${tongGiaTri}</p>
+							</div>
+							<div class="column-6 column">
+								<p>${donHang.trangThaiDonHang}</p>
+							</div>
+						</div>
 					</c:forEach>
-				</table>
-
-			</div>
-			<div class="col-md-1"></div>
-		</div>
-	</div>
-	<!-- Modal cập nhật thông tin -->
-	<div class="modal fade" id="modalInformation" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">
-						<b>Cập nhật thông tin tài khoản</b>
-					</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<div class="form-group ">
-						<label style="line-height: 2">Họ tên khách hàng*:</label><br>
-						<label id="nameWarning" style="color: red"></label> <input
-							class="form-control" id="name" name="name" type="text"
-							value=${user.getHoTen()}>
-					</div>
-					<div class="form-group ">
-						<label style="line-height: 2">Số điệnt thoại*:</label><br> <label
-							id="phoneWarning" style="color: red"></label> <input
-							class="form-control" id="phone" name="phone" type="text"
-							value=${user.getSoDienThoai()}>
-					</div>
-					<div class="form-group">
-						<label style="line-height: 2">Địa chỉ*:</label><br> <label
-							id="addressWarning" style="color: red"></label>
-						<textarea rows="3" cols="1" class="form-control" id="address">${user.getDiaChi()}</textarea>
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Hủy</button>
-					<button type="button" class="btn btn-primary"
-						onclick="changeInformation()">Cập nhật</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<!-- Modal cập nhật thông tin -->
-
-	<!-- Modal đổi pass -->
-
-	<div class="modal fade" id="modalChangePassword" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">
-						<b>Thay đổi mật khẩu</b>
-					</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-group ">
-						<label style="line-height: 2">Mật khẩu cũ*:</label><br> <label
-							id="oldWarning" style="color: red"></label> <input
-							class="form-control" id="old" name="old" type="password">
-					</div>
-					<div class="form-group ">
-						<label style="line-height: 2">Mật khẩu mới*:</label><br> <label
-							id="new1Warning" style="color: red"></label> <input
-							class="form-control" id="new1" name="new1" type="password">
-					</div>
-					<div class="form-group ">
-						<label style="line-height: 2">Xác nhận lại mật khẩu mới*:</label><br>
-						<label id="new2Warning" style="color: red"></label> <input
-							class="form-control" id="new2" name="new2" type="password">
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Hủy</button>
-					<button type="button" class="btn btn-primary"
-						onClick="changePass()">Đổi mật khẩu</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Modal đổi pass -->
-
-
+	<script src="<c:url value='/js/client/information.js'/>"></script>
+	<script src="<c:url value='/js/client/password.js'/>"></script>
 </body>
 </html>

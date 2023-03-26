@@ -43,7 +43,7 @@
 					<img src="/laptopshop/img/${sanpham.id}.png" alt=""
 						class="movie-box-img" />
 					<div class="box-text">
-						<h2 class="movie-title">${sanpham.tenSanPham}</h2>
+						<h2 class="movie-title"><a href ="/laptopshop/sp?id=${sanpham.id}">${sanpham.tenSanPham}</a></h2>
 						<span class="movie-type">${sanpham.donGia}</span> <a href="#"
 							class="watch-btn play-btn" onClick="addToCart(${sanpham.id})"><i
 							class="bx bx-right-arrow"></i> </a>

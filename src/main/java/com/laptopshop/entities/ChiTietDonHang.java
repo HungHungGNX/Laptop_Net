@@ -21,6 +21,7 @@ public class ChiTietDonHang {
 	@JoinColumn(name="ma_san_pham")
 	private SanPham sanPham;
 	private long donGia;
+	private int soLuong;
 	private int soLuongDat;
 	
 	private int soLuongNhanHang;
@@ -52,6 +53,14 @@ public class ChiTietDonHang {
 
 	public void setDonGia(long donGia) {
 		this.donGia = donGia;
+	}
+	
+	public long getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
 	}
 
 	public int getSoLuongDat() {

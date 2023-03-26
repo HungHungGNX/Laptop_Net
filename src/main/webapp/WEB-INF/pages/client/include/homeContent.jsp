@@ -2,6 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="<c:url value='/js/client/homeAjax.js'/>"></script>
+<!-- Modal -->
+<div class="modal">
+	<div class="modal-content">
+		<div class="close">
+			<i class="bx bx-window-close"></i>
+		</div>
+		<img src="./Frontend/img/banner-hot.jpg" alt="" />
+	</div>
+</div>
+
 <!-- Category -->
 <div class="category">
 	<div class="header-category">
@@ -64,3 +74,30 @@
 	<!-- Content -->
 	<div class="movies-content"></div>
 </section>
+
+
+<script>
+//Modal
+const modal = document.querySelector(".modal");
+const modal_content = document.querySelector(".modal-content");
+const close_modal = document.querySelector(".modal .close");
+const user = document.querySelector(".user");
+
+setTimeout(() => {
+    modal.classList.add("show-modal");
+}, 1000);
+
+close_modal.addEventListener("click", () => {
+    modal.classList.remove("show-modal");
+});
+
+modal.addEventListener("click", () => {
+    modal.classList.remove("show-modal");
+});
+
+modal_content.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
+
+
+</script>

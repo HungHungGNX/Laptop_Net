@@ -137,6 +137,7 @@ public class CheckOutController {
 			{
 				ChiTietDonHang detailDH = new ChiTietDonHang();
 				detailDH.setSanPham(sp);
+				detailDH.setSoLuong(Integer.parseInt(quanity.get(sp.getId())));
 				detailDH.setSoLuongDat(Integer.parseInt(quanity.get(sp.getId())));
 				detailDH.setDonGia(Integer.parseInt(quanity.get(sp.getId()))*sp.getDonGia());
 				detailDH.setDonHang(d);
@@ -153,6 +154,7 @@ public class CheckOutController {
 				ChiTietDonHang detailDH = new ChiTietDonHang();
 				detailDH.setSanPham(c.getSanPham());
 				detailDH.setDonGia(c.getSo_luong()*c.getSanPham().getDonGia());	
+				detailDH.setSoLuong(c.getSo_luong());
 				detailDH.setSoLuongDat(c.getSo_luong());
 				detailDH.setDonHang(d);
 				listDetailDH.add(detailDH);		

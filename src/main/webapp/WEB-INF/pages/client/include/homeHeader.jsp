@@ -18,13 +18,10 @@
 <!-- jquery -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-	
 </script>
 
 <!-- Link swiper css -->
 <link rel="stylesheet" href="Frontend/css/swiper-bundle.min.css" />
-
-
 </head>
 
 <body>
@@ -73,7 +70,7 @@
 				<span class="nav-link-title">Warranty </span>
 			</a> <a href="<%=request.getContextPath()%>/contact" class="nav-link"> <i class="bx bx-tv"></i> <span
 				class="nav-link-title">Contact</span>
-			</a> <a href="#home" class="nav-link"> <i class="bx bx-heart"></i> <span
+			</a> <a href="<%=request.getContextPath()%>/blog" class="nav-link"> <i class="bx bx-heart"></i> <span
 				class="nav-link-title">Blog</span>
 			</a>
 		</div>

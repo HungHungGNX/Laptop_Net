@@ -36,12 +36,12 @@ $(document).ready(function(){
 				$.each(result, function(i, sanpham){
 				if(i<8){
                   content ='<div class="swiper-slide">' +
-                  		          '<div class="movie-box">' + 
-                  		             '<img src="/laptopshop/img/'+sanpham.id+'.png" class="movie-box-img" />' +
+                  		          '<div class="movie-box">' + '<a target="_self" href="/laptopshop/sp?id=' + sanpham.id + '">' +
+                  		             '<img src="/laptopshop/img/'+sanpham.id+'.png" class="movie-box-img" />' + '</a>'  +
                   		             '<div class="box-text">' +
-                  		             	'<h2 class="movie-title">' + sanpham.tenSanPham + '</h2>' + 
+                  		             	'<h2 class="movie-title">' + '<a target="_self" href="/laptopshop/sp?id=' + sanpham.id + '">' + sanpham.tenSanPham +  '</a>'+ '</h2>' + 
                   		             	'<span class="movie-type">' + accounting.formatMoney(sanpham.donGia) + ' đ</span>' +
-                  		                '<a href="#" class="watch-btn play-btn" onClick="addToCart(' +
+                  		                '<a href="#!" class="watch-btn play-btn" onClick="addToCart(' +
                                 sanpham.id +
                                 ')">' +
                                             '<i class="bx bx-cart-add"></i>' + '</a>'+
@@ -53,9 +53,9 @@ $(document).ready(function(){
                   		 product = '<div class="movie-box">' + 
                   		             '<img src="/laptopshop/img/'+sanpham.id+'.png" class="movie-box-img" />' +
                   		             '<div class="box-text">' +
-                  		             	'<h2 class="movie-title">' + sanpham.tenSanPham + '</h2>' + 
+                  		             	'<h2 class="movie-title">' + '<a target="_self" href="/laptopshop/sp?id=' + sanpham.id + '">'+ sanpham.tenSanPham + '</a>' + '</h2>' + 
                   		             	'<span class="movie-type">' + accounting.formatMoney(sanpham.donGia) + ' đ</span>' +
-                  		                '<a href="#" class="watch-btn play-btn" onClick="addToCart(' +
+                  		                '<a href="#!" class="watch-btn play-btn" onClick="addToCart(' +
                                 				sanpham.id + ')">' +
                                             '<i class="bx bx-cart-add"></i>' + '</a>'+
                   		             '</div>'+
@@ -71,4 +71,6 @@ $(document).ready(function(){
 	}
 	
 })
+
+
 

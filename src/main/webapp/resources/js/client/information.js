@@ -33,7 +33,7 @@ function changeInformation()
 	send.hoTen = name;
 	send.soDienThoai = phone;
 	send.diaChi = address;
-	var data = JSON.stringify(send)
+	var data = JSON.stringify(send);
 	$.ajax({
 			type: "POST",	
 			data: data,	
